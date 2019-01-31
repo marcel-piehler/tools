@@ -28,6 +28,7 @@ function generateKey() {
     keyString += String.fromCharCode(Math.floor((Math.random() * 93) + 33));
   }
   keyInput.value = keyString;
+  cryptIt();
 }
 
 function cryptIt() {
