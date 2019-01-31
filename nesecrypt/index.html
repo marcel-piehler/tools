@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nesecrypt</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/nesecrypt.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+  </head>
+  <body>
+    <section class="input-container">
+      <div class="input-wrapper">
+          <label class="nese-label" for="input">Input</label>
+          <textarea class="nese-input" pattern="" id="input" rows="1" spellcheck="false"></textarea>
+      </div>
+      <div class="input-wrapper">
+        <label class="nese-label" for="key">Key</label>
+        <textarea class="nese-input" id="key" rows="1" spellcheck="false"></textarea>
+      </div>
+      <div class="input-wrapper">
+        <label class="nese-label" for="output">Output</label>
+        <textarea class="nese-input" id="output" rows="1" ondblclick="switchInputOutput()" onclick="this.select()" readonly></textarea>
+      </div>
+      <div class="input-wrapper">
+        <label class="nese-label">Mode</label>
+        <div class="button-wrapper">
+            <button class="nese-button selected" id="encrypt-button" onclick="changeMode(true)">Encrypt</button>
+            <button class="nese-button" id="decrypt-button" onclick="changeMode(false)">Decrypt</button>
+            <button class="nese-button" id="generator-button" onclick="generateKey()">Generate Key</button>
+        </div>
+      </div>
+    </section>
+    <script src="../assets/js/nesecrypt.js"></script>
+  </body>
+</html>

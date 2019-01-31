@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  width: 75%;
+}
+
+.input-wrapper {
+  width: 100%;
+  /* background: #484; */
+}
+
+.input-wrapper .nese-input {
+  width: calc(100% - 1em);
+}
+
+.input-wrapper .nese-label {
+  display: block;
+  width: 100%;
+}
+
+.input-wrapper .button-wrapper {
+  display: flex;
+}
+
+.button-wrapper .nese-button {
+  flex-grow: 1;
+}
+
+#decrypt-button {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+
+textarea.nese-input {
+  resize: vertical;
+}
+
+.nese-button.selected {
+  box-shadow: 0 0 0 2px #606060;
+}

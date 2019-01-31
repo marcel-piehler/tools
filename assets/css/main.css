@@ -1,0 +1,51 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #393939;
+  font-size: 20px;
+  color: #e0e0e0;
+  font-family: 'Roboto';
+}
+
+.nese-input {
+  background: #222222;
+  border: none;
+  padding: .5em;
+  color: inherit;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1em;
+  font-family: inherit;
+  transition: background-color .25s;
+}
+
+.nese-input:hover, .nese-input:focus {
+  background: #282828;
+}
+
+.nese-label {
+  opacity: .5;
+  font-weight: 300;
+}
+
+.nese-button {
+  background: #222222;
+  border: none;
+  padding: .5em;
+  color: inherit;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1em;
+  font-family: inherit;
+  transition: .25s;
+  cursor: pointer;
+}
+
+.nese-button:hover, .nese-button:focus {
+  background: #282828;
+}
