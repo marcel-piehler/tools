@@ -80,3 +80,76 @@ var nesecrypt = {
     return decryptedText;
   }
 }
+
+// var nesecrypt = {
+//   encrypt : function(text, key) {
+//     var encryptedString = "";
+//     var encryptedArray = "";
+//     var encodedString = "";
+
+//     for (var i = 0; i < text.length; i++) {      
+//       var textCharCode = text.charCodeAt(i) || 0;
+//       var keyCharCode = key.charCodeAt(i % key.length) || 0;
+
+//       var xorCharCode = textCharCode ^ keyCharCode;
+
+//       encryptedString += String.fromCharCode(xorCharCode);
+//     }
+
+//     console.log(encryptedString);
+
+//     encryptedArray = StrToUint8Array(encryptedString);
+//     encodedString = btoa(String.fromCharCode.apply(null, encryptedArray));
+    
+//     return encodedString;
+//   },
+
+//   decrypt : function(text, key) {
+//     var decodedString = "";
+//     var decryptedString = "";
+//     var decryptedArray = "";
+//     var decryptedResult = "";
+
+//     decodedString = atob(text);
+//     var encryptedArray = StrToUint8Array(decodedString);
+//     console.log(unescape(encodeURIComponent(decodedString)));
+//     console.log(decodedString);
+
+//     for (var i = 0; i < decodedString.length; i++) {      
+//       var textCharCode = decodedString.charCodeAt(i) || 0;
+//       var keyCharCode = key.charCodeAt(i % key.length) || 0;
+
+//       var xorCharCode = textCharCode ^ keyCharCode;
+
+//       decryptedString += String.fromCharCode(xorCharCode);
+//     }
+
+//     console.log(decryptedString);
+
+//     return decryptedResult;
+//   }
+// }
+
+function Uint8ArrayToStr(byteArray) {
+  // Use TextDecoder if available
+  if (window.TextDecoder) {
+    return new TextDecoder('utf-8').decode(byteArray);
+  }
+
+  var utf8 = String.fromCharCode.apply(null, byteArray);
+  return decodeURIComponent(escape(utf8));
+}
+
+function StrToUint8Array(str) {
+  // Use TextEncoder if available
+  if (window.TextEncoder) {
+    return new TextEncoder('utf-8').encode(str);
+  }
+
+  var utf8 = unescape(encodeURIComponent(str));
+  var result = new Uint8Array(utf8.length);
+  for (var i = 0; i < utf8.length; i++) {
+      result[i] = utf8.charCodeAt(i);
+  }
+  return result;
+}

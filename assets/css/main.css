@@ -6,14 +6,14 @@ body, html {
 }
 
 body {
-  background: #393939;
+  background: #202020;
   font-size: 20px;
   color: #e0e0e0;
   font-family: 'Roboto';
 }
 
 .nese-input {
-  background: #222222;
+  background: #303030;
   border: none;
   padding: .5em;
   color: inherit;
@@ -34,7 +34,7 @@ body {
 }
 
 .nese-button {
-  background: #222222;
+  background: #303030;
   border: none;
   padding: .5em;
   color: inherit;
