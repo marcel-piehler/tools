@@ -40,5 +40,5 @@ textarea.nese-input {
 }
 
 .nese-button.selected {
-  box-shadow: 0 0 0 2px #606060;
+  box-shadow: 0 0 0 0.1em #303030;
 }

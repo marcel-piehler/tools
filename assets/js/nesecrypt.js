@@ -49,7 +49,9 @@ function cryptIt() {
 
 var nesecrypt = {
   encrypt : function(text, key) {
-    var encryptedText = "";
+    var encryptedString = "";
+    var encryptedArray = "";
+    var encodedString = "";
 
     for (var i = 0; i < text.length; i++) {      
       var textCharCode = text.charCodeAt(i) || 0;
@@ -57,78 +59,39 @@ var nesecrypt = {
 
       var xorCharCode = textCharCode ^ keyCharCode;
 
-      encryptedText += ("0" + xorCharCode.toString(16)).slice(-2);
+      encryptedString += String.fromCharCode(xorCharCode);
     }
 
-    return encryptedText;
+    encryptedArray = StrToUint8Array(encryptedString);
+    encodedString = btoa(String.fromCharCode.apply(null, encryptedArray));
+    
+    return encodedString;
   },
 
   decrypt : function(text, key) {
-    var decryptedText = "";
+    var decryptedString = "";
 
-    var hexArray = text.match(/.{2}/g);
+    var decodedString = atob(text);
+    var encryptedArray = new Uint8Array(decodedString.length);
 
-    for (var i = 0; i < hexArray.length; i++) {
-      var textCharCode = parseInt(hexArray[i], 16) || 0;
+    for(var i = 0; i < decodedString.length; i++) {
+      encryptedArray[i] = decodedString.charCodeAt(i);
+    }
+
+    var encryptedString = Uint8ArrayToStr(encryptedArray);
+
+    for (var i = 0; i < encryptedString.length; i++) {      
+      var textCharCode = encryptedString.charCodeAt(i) || 0;
       var keyCharCode = key.charCodeAt(i % key.length) || 0;
 
       var xorCharCode = textCharCode ^ keyCharCode;
 
-      decryptedText += String.fromCharCode(xorCharCode);
+      decryptedString += String.fromCharCode(xorCharCode);
     }
 
-    return decryptedText;
+    return decryptedString;
   }
 }
-
-// var nesecrypt = {
-//   encrypt : function(text, key) {
-//     var encryptedString = "";
-//     var encryptedArray = "";
-//     var encodedString = "";
-
-//     for (var i = 0; i < text.length; i++) {      
-//       var textCharCode = text.charCodeAt(i) || 0;
-//       var keyCharCode = key.charCodeAt(i % key.length) || 0;
-
-//       var xorCharCode = textCharCode ^ keyCharCode;
-
-//       encryptedString += String.fromCharCode(xorCharCode);
-//     }
-
-//     console.log(encryptedString);
-
-//     encryptedArray = StrToUint8Array(encryptedString);
-//     encodedString = btoa(String.fromCharCode.apply(null, encryptedArray));
-    
-//     return encodedString;
-//   },
-
-//   decrypt : function(text, key) {
-//     var decodedString = "";
-//     var decryptedString = "";
-//     var decryptedArray = "";
-//     var decryptedResult = "";
-
-//     decodedString = atob(text);
-//     var encryptedArray = StrToUint8Array(decodedString);
-//     console.log(unescape(encodeURIComponent(decodedString)));
-//     console.log(decodedString);
-
-//     for (var i = 0; i < decodedString.length; i++) {      
-//       var textCharCode = decodedString.charCodeAt(i) || 0;
-//       var keyCharCode = key.charCodeAt(i % key.length) || 0;
-
-//       var xorCharCode = textCharCode ^ keyCharCode;
-
-//       decryptedString += String.fromCharCode(xorCharCode);
-//     }
-
-//     console.log(decryptedString);
-
-//     return decryptedResult;
-//   }
-// }
 
 function Uint8ArrayToStr(byteArray) {
   // Use TextDecoder if available
